@@ -1,45 +1,67 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Icon } from '../../../../components';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Icon, Button } from '../../../../components';
+import { ROLE } from '../../../../constants';
 import styled from 'styled-components';
+import {
+	selectUserRole,
+	selectUserLogin,
+	selectUserSession,
+} from '../../../../selectors';
+import { logout } from '../../../../actions';
 
 const RightAligned = styled.div`
 	display: flex;
-	justify-content: flex-end;
-`;
-
-const StyledLink = styled(Link)`
-	display: flex;
 	justify-content: center;
-	align-items: centr;
-
-	font-size: 18px;
-	width: 100px;
-	height: 32px;
-	cursor: pointer;
-	color: #000;
-	text-decoration: none;
-	border: 1px solid #000;
-	background-color: #eee;
+	align-items: center;
 `;
 
-const StyledBatton = styled.div`
+const StyledBackIcon = styled.div`
 	&:hover {
-		cursor: pointer; 
+		cursor: pointer;
 	}
+`;
+
+const UserName = styled.div`
+	font-size: 18px;
+	font-weight: bold;
 `;
 
 const ControlPanelContainer = ({ className }) => {
 	const navigate = useNavigate();
+	const roleId = useSelector(selectUserRole);
+	const login = useSelector(selectUserLogin);
+	const session = useSelector(selectUserSession);
+	const dispatch = useDispatch();
+
+	console.log(roleId);
+	console.log(login);
+	console.log(session);
 
 	return (
 		<div className={className}>
 			<RightAligned>
-				<StyledLink to="/login">Войти</StyledLink>
+				{roleId === ROLE.GUEST ? (
+					<Button>
+						<Link to="/login">Войти</Link>
+					</Button>
+				) : (
+					<>
+						<UserName>{login}</UserName>
+						<Icon
+							id="fa-sign-out"
+							margin="0 0 0 10px"
+							title="Выход"
+							onClick={() => dispatch(logout(session))}
+						/>
+					</>
+				)}
 			</RightAligned>
 			<RightAligned>
-				<StyledBatton href="" onClick={() => navigate(-1)}>
+				<StyledBackIcon href="" onClick={() => navigate(-1)}>
 					<Icon id="fa-backward" margin="10px 0 0 0" title="Назад" />
-				</StyledBatton>
+				</StyledBackIcon>
 				<Link to="/post">
 					<Icon
 						id="fa-file-text-o"
