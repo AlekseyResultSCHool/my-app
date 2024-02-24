@@ -68,6 +68,8 @@ const RegistrationContainer = ({ className }) => {
 
 	const roleId = useSelector(selectUserRole);
 
+	console.log(roleId)
+
 	if (roleId !== ROLE.GUEST) {
 		return <Navigate to="/" />;
 	};

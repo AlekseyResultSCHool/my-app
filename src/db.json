@@ -3,22 +3,28 @@
     {
       "id": "001",
       "login": "anton",
-      "password": "qwerty123",
+      "password": "qwe123",
       "registed_at": "2024-09-22",
       "role_id": 0
     },
     {
       "id": "034a",
       "login": "ivan",
-      "password": "qwerty123",
+      "password": "qwe123",
       "registed_at": "2047-04-06 13:28",
       "role_id": 2
     },
     {
       "id": "dbda",
       "login": "petr",
-      "password": "qwerty123",
+      "password": "qwe123",
       "registed_at": "2037-12-15 04:20",
+      "role_id": 2
+    },
+    {
+      "id": "e1a7",
+      "login": "sergei",
+      "registed_at": "2057-06-11 05:31",
       "role_id": 2
     }
   ],

@@ -9,7 +9,7 @@ const ButtonContainer = ({ children, className, width, ...props }) => {
 };
 
 export const Button = styled(ButtonContainer)`
-    width: ${({ width = '100%' }) => width}
+    width: ${({ width = "100%" }) => width}
     display: flex;
     justify-content: center;
     align-items: center;
